@@ -16,7 +16,7 @@ class Login extends Component {
     dispatch(updatePersonalInfo(this.state));
     const token = await fecthToken();
     history.push('/game');
-    localStorage.setItem('token', token);
+    localStorage.setItem('token', JSON.stringify(token));
   };
 
   handleChange = (event) => {
