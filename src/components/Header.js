@@ -34,4 +34,4 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps)(Header);
 
-// Requisito 5: raphael e Luiz;
+// Requisito 5: Raphael e Luiz;
