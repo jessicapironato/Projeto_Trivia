@@ -59,6 +59,7 @@ class Login extends Component {
         >
           Play
         </button>
+        {/* btn-conf */}
       </div>
     );
   }
