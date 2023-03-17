@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { fecthToken } from '../helpers/fetchHelpers';
+import { updatePersonalInfo } from '../redux/actions';
 
 class Login extends Component {
   state = {
@@ -10,7 +12,8 @@ class Login extends Component {
   };
 
   onClickHandler = async () => {
-    const { history } = this.props;
+    const { history, dispatch } = this.props;
+    dispatch(updatePersonalInfo(this.state));
     const token = await fecthToken();
     history.push('/game');
     localStorage.setItem('token', token);
@@ -83,12 +86,14 @@ class Login extends Component {
 }
 
 Login.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default Login;
+export default connect()(Login);
 
 // Requisito 1: Aline, Raphael, Carlos, Jéssica, Luiz;
 // Requisito 2: Raphael e Luiz;
+// Requisito 5: Raphael e Luiz;
