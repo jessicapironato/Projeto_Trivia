@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Settings from './components/Settings';
+import Game from './pages/Game';
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={ Login } />
         <Route exact path="/settings" component={ Settings } />
-        {/* <Route path="/game" component={ <Game /> } />
-        <Route path="/feedback" component={ <Feedback /> } /> */}
+        <Route path="/game" component={ Game } />
+        {/* <Route path="/feedback" component={ <Feedback /> } /> */}
       </Switch>
 
     </div>
