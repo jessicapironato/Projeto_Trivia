@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { fecthToken } from '../helpers/fetchHelpers';
 
 class Login extends Component {
   state = {
@@ -8,8 +9,11 @@ class Login extends Component {
     buttonLogin: true,
   };
 
-  onClickHandler = () => {
-    console.log('clicked');
+  onClickHandler = async () => {
+    const { history } = this.props;
+    const token = await fecthToken();
+    history.push('/game');
+    localStorage.setItem('token', token);
   };
 
   handleChange = (event) => {
@@ -87,3 +91,4 @@ Login.propTypes = {
 export default Login;
 
 // Requisito 1: Aline, Raphael, Carlos, Jéssica, Luiz;
+// Requisito 2: Raphael e Luiz;
