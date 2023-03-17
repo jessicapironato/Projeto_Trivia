@@ -96,4 +96,4 @@ export default connect()(Login);
 
 // Requisito 1: Aline, Raphael, Carlos, Jéssica, Luiz;
 // Requisito 2: Raphael e Luiz;
-// Requisito 5: Raphael e Luiz;
+// Requisito 5: Raphael e Luiz; ok
