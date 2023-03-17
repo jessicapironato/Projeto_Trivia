@@ -9,12 +9,10 @@ const INITIAL_STATE = {
 
 const player = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case EMAIL_ACTION: {
+  default:
     return {
       ...state,
     };
-  }
-  default: return state;
   }
 };
 
