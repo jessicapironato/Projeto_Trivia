@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { fecthToken } from '../helpers/fetchHelpers';
 
 class Login extends Component {
   state = {
@@ -8,8 +9,11 @@ class Login extends Component {
     buttonLogin: true,
   };
 
-  onClickHandler = () => {
-    console.log('clicked');
+  onClickHandler = async () => {
+    const { history } = this.props;
+    const token = await fecthToken();
+    history.push('/game');
+    localStorage.setItem('token', token);
   };
 
   handleChange = (event) => {
@@ -64,9 +68,11 @@ class Login extends Component {
   }
 }
 
-// Login.propTypes = {
-
-// };
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+}.isRequired;
 
 export default Login;
 
