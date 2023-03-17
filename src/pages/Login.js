@@ -23,6 +23,11 @@ class Login extends Component {
     }, this.formValidation);
   };
 
+  onClickSettings = () => {
+    const { history } = this.props;
+    history.push('/settings');
+  };
+
   formValidation = () => {
     const { email, name } = this.state;
 
@@ -63,6 +68,15 @@ class Login extends Component {
         >
           Play
         </button>
+
+        <button
+          type="button"
+          data-testid="btn-settings"
+          onClick={ this.onClickSettings }
+        >
+          Settings
+        </button>
+
       </div>
     );
   }
@@ -70,10 +84,11 @@ class Login extends Component {
 
 Login.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func,
-  }),
-}.isRequired;
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Login;
 
 // Requisito 1: Aline, Raphael, Carlos, Jéssica, Luiz;
+// Requisito 2: Raphael e Luiz;
