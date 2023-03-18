@@ -9,7 +9,7 @@ class Questions extends Component {
   };
 
   async componentDidMount() {
-    const token = JSON.parse(localStorage.getItem('token'));
+    const token = localStorage.getItem('token');
     const resolvedFetch = await fetchQuestions(token);
 
     this.setState({
