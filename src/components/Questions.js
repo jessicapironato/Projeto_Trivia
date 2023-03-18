@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../helpers/fetchHelpers';
+import './Questions.css';
 
 class Questions extends Component {
   state = {
     arrayQuestions: [],
+    answered: false,
   };
 
   async componentDidMount() {
@@ -31,6 +33,7 @@ class Questions extends Component {
         question: arrayQuestions[0].correct_answer,
         correct: true,
         dataTestId: 'correct-answer',
+        color: 'green',
 
       };
 
@@ -39,6 +42,7 @@ class Questions extends Component {
           question: answer,
           correct: false,
           dataTestId: `wrong-answer-${index}`,
+          color: 'red',
         }));
 
       const currentAnswers = [...currentIncorrectAnswers, currentCorrectAnswer];
@@ -48,12 +52,17 @@ class Questions extends Component {
     }
   };
 
+  onClickHandler = () => {
+    this.setState({
+      answered: true,
+    });
+  };
+
   render() {
-    const { arrayQuestions } = this.state;
-    // console.log(arrayQuestions);
+    const { arrayQuestions, answered } = this.state;
 
     const generatedAnswers = this.generateAnswers();
-    console.log(generatedAnswers);
+    // console.log(generatedAnswers);
 
     return (
       <div>
@@ -68,9 +77,12 @@ class Questions extends Component {
             arrayQuestions.length > 0 && (
               generatedAnswers.map((answer) => (
                 <button
+                  className={ answered ? answer.color : '' }
                   key={ answer.question }
+                  type="button"
                   data-testid={ answer.dataTestId }
                   value={ answer.correct }
+                  onClick={ this.onClickHandler }
                 >
                   {answer.question}
 
@@ -97,3 +109,4 @@ Questions.propTypes = {
 export default connect()(Questions);
 
 // Requisito 6: Aline, Raphael, Carlos, Jéssica, Luiz;
+// Requisito 7: Aline, Raphael, Carlos, Jéssica, Luiz;
