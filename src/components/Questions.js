@@ -24,9 +24,36 @@ class Questions extends Component {
     }
   }
 
+  generateAnswers = () => {
+    const { arrayQuestions } = this.state;
+    if (arrayQuestions.length > 0) {
+      const currentCorrectAnswer = {
+        question: arrayQuestions[0].correct_answer,
+        correct: true,
+        dataTestId: 'correct-answer',
+
+      };
+
+      const currentIncorrectAnswers = arrayQuestions[0].incorrect_answers
+        .map((answer, index) => ({
+          question: answer,
+          correct: false,
+          dataTestId: `wrong-answer-${index}`,
+        }));
+
+      const currentAnswers = [...currentIncorrectAnswers, currentCorrectAnswer];
+      const number = 0.5;
+      const curRandomAnswers = currentAnswers.sort(() => number - Math.random());
+      return curRandomAnswers;
+    }
+  };
+
   render() {
     const { arrayQuestions } = this.state;
-    console.log(arrayQuestions);
+    // console.log(arrayQuestions);
+
+    const generatedAnswers = this.generateAnswers();
+    console.log(generatedAnswers);
 
     return (
       <div>
@@ -36,7 +63,22 @@ class Questions extends Component {
             <h1 data-testid="question-text">{ arrayQuestions[0].question }</h1>
           </>
         )}
+        <div data-testid="answer-options">
+          {
+            arrayQuestions.length > 0 && (
+              generatedAnswers.map((answer) => (
+                <button
+                  key={ answer.question }
+                  data-testid={ answer.dataTestId }
+                  value={ answer.correct }
+                >
+                  {answer.question}
 
+                </button>
+              ))
+            )
+          }
+        </div>
       </div>
     );
   }
@@ -53,3 +95,5 @@ Questions.propTypes = {
 };
 
 export default connect()(Questions);
+
+// Requisito 6: Aline, Raphael, Carlos, Jéssica, Luiz;
