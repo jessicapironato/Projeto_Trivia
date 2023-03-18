@@ -8,6 +8,8 @@ class Questions extends Component {
   state = {
     arrayQuestions: [],
     answered: false,
+    counter: 30,
+    generatedAnswers: [],
   };
 
   async componentDidMount() {
@@ -16,6 +18,11 @@ class Questions extends Component {
 
     this.setState({
       arrayQuestions: resolvedFetch.results,
+    }, () => {
+      const generatedAnswers = this.generateAnswers();
+      this.setState({
+        generatedAnswers,
+      });
     });
 
     if (resolvedFetch.response_code) {
@@ -24,6 +31,8 @@ class Questions extends Component {
 
       history.push('/');
     }
+    const interval = 1000;
+    this.timer = setInterval(this.counterHandler, interval);
   }
 
   generateAnswers = () => {
@@ -53,17 +62,24 @@ class Questions extends Component {
   };
 
   onClickHandler = () => {
+    clearInterval(this.timer);
     this.setState({
       answered: true,
     });
   };
 
+  counterHandler = () => {
+    this.setState((prevState) => ({
+      counter: prevState.counter - 1,
+    }));
+  };
+
   render() {
-    const { arrayQuestions, answered } = this.state;
+    const { arrayQuestions, answered, counter, generatedAnswers } = this.state;
 
-    const generatedAnswers = this.generateAnswers();
-    // console.log(generatedAnswers);
-
+    if (counter === 0) {
+      clearInterval(this.timer);
+    }
     return (
       <div>
         {arrayQuestions.length > 0 && (
@@ -72,6 +88,7 @@ class Questions extends Component {
             <h1 data-testid="question-text">{ arrayQuestions[0].question }</h1>
           </>
         )}
+        <div><h2>{counter}</h2></div>
         <div data-testid="answer-options">
           {
             arrayQuestions.length > 0 && (
@@ -83,6 +100,7 @@ class Questions extends Component {
                   data-testid={ answer.dataTestId }
                   value={ answer.correct }
                   onClick={ this.onClickHandler }
+                  disabled={ counter === 0 || answered }
                 >
                   {answer.question}
 
@@ -110,3 +128,4 @@ export default connect()(Questions);
 
 // Requisito 6: Aline, Raphael, Carlos, Jéssica, Luiz;
 // Requisito 7: Aline, Raphael, Carlos, Jéssica, Luiz;
+// Requisito 8: Aline, Raphael, Carlos, Jéssica, Luiz;
