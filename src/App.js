@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Settings from './components/Settings';
 import Game from './pages/Game';
+import Feedback from './pages/Feedback';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Route exact path="/" component={ Login } />
         <Route exact path="/settings" component={ Settings } />
         <Route path="/game" component={ Game } />
-        {/* <Route path="/feedback" component={ <Feedback /> } /> */}
+        <Route path="/feedback" component={ Feedback } />
       </Switch>
 
     </div>
