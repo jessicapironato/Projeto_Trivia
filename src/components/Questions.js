@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../helpers/fetchHelpers';
 import './Questions.css';
+import { updateScore } from '../redux/actions';
 
 class Questions extends Component {
   state = {
@@ -62,11 +63,26 @@ class Questions extends Component {
     }
   };
 
-  onClickHandler = () => {
+  onClickHandler = (event) => {
+    const { value, dataset: { diff } } = event.target;
+    const { counter } = this.state;
+    const { dispatch } = this.props;
+
     clearInterval(this.timer);
     this.setState({
       answered: true,
     });
+    if (value === 'true') {
+      const diffObj = {
+        easy: 1,
+        medium: 2,
+        hard: 3,
+      };
+      const pointValue = 10;
+      const points = pointValue + (counter * diffObj[diff]);
+
+      dispatch(updateScore(points));
+    }
   };
 
   counterHandler = () => {
@@ -124,6 +140,7 @@ class Questions extends Component {
                   type="button"
                   data-testid={ answer.dataTestId }
                   value={ answer.correct }
+                  data-diff={ arrayQuestions[positionQuestion].difficulty }
                   onClick={ this.onClickHandler }
                   disabled={ counter === 0 || answered }
                 >
@@ -153,6 +170,7 @@ Questions.defaultProps = {
 };
 
 Questions.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
@@ -160,7 +178,9 @@ Questions.propTypes = {
 
 export default connect()(Questions);
 
-// Requisito 6: Aline, Raphael, Carlos, Jéssica, Luiz;
+// Requisito 6: Aline, Raphael, Carlos, Jéssica, Luiz; Dependendo da "sorte" na aleatóriedade, requisito pode falhar nos testes;
 // Requisito 7: Aline, Raphael, Carlos, Jéssica, Luiz;
 // Requisito 8: Aline, Raphael, Carlos, Jéssica, Luiz;
-// Requisito 10: Aline e Jéssica
+// Requisito 9: Raphael, Carlos;
+// Requisito 10: Aline e Jéssica; Requisito 7 falhando no cypress, verificar o link:
+// https://trybecourse.slack.com/archives/C03BTD3G9V3/p1662752927964429?thread_ts=1662752871.237939&cid=C03BTD3G9V3
