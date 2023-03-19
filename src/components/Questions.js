@@ -37,6 +37,15 @@ class Questions extends Component {
     this.timer = setInterval(this.counterHandler, interval);
   }
 
+  componentDidUpdate() {
+    const { counter, answered } = this.state;
+    if (counter === 0 && answered === false) {
+      this.setState({
+        answered: true,
+      });
+    }
+  }
+
   generateAnswers = () => {
     const { arrayQuestions, positionQuestion } = this.state;
     if (arrayQuestions.length > 0) {
@@ -92,15 +101,26 @@ class Questions extends Component {
   };
 
   handleClickNext = () => {
+    const { history } = this.props;
+    const { positionQuestion } = this.state;
+    const maxQuestion = 4;
+
+    if (positionQuestion === maxQuestion) {
+      history.push('/feedback');
+    }
     this.setState((prevState) => ({
       answered: false,
       positionQuestion: prevState.positionQuestion + 1,
+      counter: 30,
     }), () => {
       const generatedAnswers = this.generateAnswers();
       this.setState({
         generatedAnswers,
       });
     });
+
+    const interval = 1000;
+    this.timer = setInterval(this.counterHandler, interval);
   };
 
   render() {
@@ -184,3 +204,4 @@ export default connect()(Questions);
 // Requisito 9: Raphael, Carlos;
 // Requisito 10: Aline e Jéssica; Requisito 7 falhando no cypress, verificar o link:
 // https://trybecourse.slack.com/archives/C03BTD3G9V3/p1662752927964429?thread_ts=1662752871.237939&cid=C03BTD3G9V3
+// Requisito 11: Aline, Raphael, Carlos, Jéssica;
