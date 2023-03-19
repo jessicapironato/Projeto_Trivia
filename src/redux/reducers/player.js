@@ -1,4 +1,4 @@
-import { UPDATE_PERSONAL_INFO } from '../actions';
+import { UPDATE_PERSONAL_INFO, UPDATE_SCORE } from '../actions';
 
 const INITIAL_STATE = {
   name: '', // nome-da-pessoa,
@@ -16,6 +16,12 @@ const player = (state = INITIAL_STATE, action) => {
       gravatarEmail: action.payload.email,
     };
   }
+  case UPDATE_SCORE: {
+    return {
+      ...state,
+      score: state.score + action.payload,
+    };
+  }
   default:
     return {
       ...state,
@@ -24,3 +30,5 @@ const player = (state = INITIAL_STATE, action) => {
 };
 
 export default player;
+
+// Requisito 9: Raphael, Carlos;
