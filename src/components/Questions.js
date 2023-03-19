@@ -140,7 +140,7 @@ class Questions extends Component {
                   type="button"
                   data-testid={ answer.dataTestId }
                   value={ answer.correct }
-                  data-diff={ arrayQuestions[0].difficulty }
+                  data-diff={ arrayQuestions[positionQuestion].difficulty }
                   onClick={ this.onClickHandler }
                   disabled={ counter === 0 || answered }
                 >
@@ -182,5 +182,5 @@ export default connect()(Questions);
 // Requisito 7: Aline, Raphael, Carlos, Jéssica, Luiz;
 // Requisito 8: Aline, Raphael, Carlos, Jéssica, Luiz;
 // Requisito 9: Raphael, Carlos;
-// Requisito 10: Aline e Jéssica; Requisito 7 falhando no cypress, verificar o link: 
-https://trybecourse.slack.com/archives/C03BTD3G9V3/p1662752927964429?thread_ts=1662752871.237939&cid=C03BTD3G9V3
+// Requisito 10: Aline e Jéssica; Requisito 7 falhando no cypress, verificar o link:
+// https://trybecourse.slack.com/archives/C03BTD3G9V3/p1662752927964429?thread_ts=1662752871.237939&cid=C03BTD3G9V3
