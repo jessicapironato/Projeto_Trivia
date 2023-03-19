@@ -10,6 +10,7 @@ class Questions extends Component {
     answered: false,
     counter: 30,
     generatedAnswers: [],
+    positionQuestion: 0,
   };
 
   async componentDidMount() {
@@ -36,17 +37,17 @@ class Questions extends Component {
   }
 
   generateAnswers = () => {
-    const { arrayQuestions } = this.state;
+    const { arrayQuestions, positionQuestion } = this.state;
     if (arrayQuestions.length > 0) {
       const currentCorrectAnswer = {
-        question: arrayQuestions[0].correct_answer,
+        question: arrayQuestions[positionQuestion].correct_answer,
         correct: true,
         dataTestId: 'correct-answer',
         color: 'green',
 
       };
 
-      const currentIncorrectAnswers = arrayQuestions[0].incorrect_answers
+      const currentIncorrectAnswers = arrayQuestions[positionQuestion].incorrect_answers
         .map((answer, index) => ({
           question: answer,
           correct: false,
@@ -74,8 +75,24 @@ class Questions extends Component {
     }));
   };
 
+  handleClickNext = () => {
+    this.setState((prevState) => ({
+      answered: false,
+      positionQuestion: prevState.positionQuestion + 1,
+    }), () => {
+      const generatedAnswers = this.generateAnswers();
+      this.setState({
+        generatedAnswers,
+      });
+    });
+  };
+
   render() {
-    const { arrayQuestions, answered, counter, generatedAnswers } = this.state;
+    const { arrayQuestions,
+      answered,
+      counter,
+      generatedAnswers,
+      positionQuestion } = this.state;
 
     if (counter === 0) {
       clearInterval(this.timer);
@@ -84,8 +101,16 @@ class Questions extends Component {
       <div>
         {arrayQuestions.length > 0 && (
           <>
-            <h1 data-testid="question-category">{ arrayQuestions[0].category }</h1>
-            <h1 data-testid="question-text">{ arrayQuestions[0].question }</h1>
+            <h1 data-testid="question-category">
+              { arrayQuestions[positionQuestion]
+                .category }
+
+            </h1>
+            <h1 data-testid="question-text">
+              { arrayQuestions[positionQuestion]
+                .question }
+
+            </h1>
           </>
         )}
         <div><h2>{counter}</h2></div>
@@ -109,6 +134,15 @@ class Questions extends Component {
             )
           }
         </div>
+        {answered && (
+          <button
+            data-testid="btn-next"
+            type="button"
+            onClick={ this.handleClickNext }
+          >
+
+            Next
+          </button>)}
       </div>
     );
   }
@@ -129,3 +163,4 @@ export default connect()(Questions);
 // Requisito 6: Aline, Raphael, Carlos, Jéssica, Luiz;
 // Requisito 7: Aline, Raphael, Carlos, Jéssica, Luiz;
 // Requisito 8: Aline, Raphael, Carlos, Jéssica, Luiz;
+// Requisito 10: Aline e Jéssica
