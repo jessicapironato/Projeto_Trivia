@@ -17,10 +17,17 @@ class Feedback extends Component {
 
   render() {
     const { assertions, score } = this.props;
+    const minAssertion = 3;
     return (
       <div>
         <h1 data-testid="feedback-text">Feedback</h1>
         <Header />
+        <h2
+          data-testid="feedback-text"
+        >
+          {assertions >= minAssertion ? 'Well Done!' : 'Could be better...'}
+
+        </h2>
         <h3
           data-testid="feedback-total-score"
         >
@@ -50,9 +57,11 @@ class Feedback extends Component {
   }
 }
 
+
 Feedback.defaultProps = {
   history: {},
 };
+
 Feedback.propTypes = {
   assertions: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
@@ -60,7 +69,7 @@ Feedback.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
-};
+
 
 const mapStateToProps = (state) => ({
   assertions: state.player.assertions,
@@ -70,4 +79,6 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(Feedback);
 
 // Requisito 11: Aline, Raphael, Carlos, Jéssica;
+// Requisito 13: Raphael e Carlos
 // Requisito 14/15/16/18: Aline e Jéssica;
+
