@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import { renderWithRouterAndRedux } from '../tests/helpers/renderWithRouterAndRedux'
@@ -22,8 +22,8 @@ it('1.Testa se as informações são renderizadas', ()=>{
     expect(btnSettings).toBeVisible();
 })
 
-it('2.Testa se o botão é habilitado após preenchimento de nome e e-mail', ()=>{
-  renderWithRouterAndRedux(<App />);
+it('2.Testa se o botão é habilitado após preenchimento de nome e e-mail', async () => {
+  const { history } = renderWithRouterAndRedux(<App />);
 
   const inputName = screen.getByTestId('input-player-name');
   const inputEmail = screen.getByTestId('input-gravatar-email');
@@ -37,6 +37,11 @@ it('2.Testa se o botão é habilitado após preenchimento de nome e e-mail', ()=
   expect(btnPlay).not.toHaveAttribute('disabled');
 
   userEvent.click(btnPlay);
+
+  await screen.findByTestId('correct-answer', {}, {timeout: 5000})
+  
+  const { pathname } = history.location;
+  expect(pathname).toBe('/game');
 
 })
 

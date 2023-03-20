@@ -21,7 +21,7 @@ class Feedback extends Component {
     const minAssertion = 3;
     return (
       <div>
-        <h1 data-testid="feedback-text">Feedback</h1>
+        <h1>Feedback</h1>
         <Header />
         <h2
           data-testid="feedback-text"
