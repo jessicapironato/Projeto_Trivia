@@ -1,32 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 
-// import PropTypes from 'prop-types';
-
 class Feedback extends Component {
+  handleClickPlayAgain = () => {
+    const { history } = this.props;
+    history.push('/');
+    // dispatch();
+  };
+
   render() {
-    const { assertions } = this.props;
+    const { assertions, score } = this.props;
     return (
       <div>
         <h1 data-testid="feedback-text">Feedback</h1>
         <Header />
         <h3
+          data-testid="feedback-total-score"
+        >
+          { score }
+        </h3>
+        <h3
           data-testid="feedback-total-question"
         >
           { assertions }
         </h3>
+        <button
+          data-testid="btn-play-again"
+          onClick={ this.handleClickPlayAgain }
+        >
+          Play Again
+        </button>
       </div>
     );
   }
 }
 
+Feedback.defaultProps = {
+  history: {},
+};
 Feedback.propTypes = {
   assertions: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  // dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
 };
 
 const mapStateToProps = (state) => ({
   assertions: state.player.assertions,
+  score: state.player.score,
 });
 
 export default connect(mapStateToProps)(Feedback);
