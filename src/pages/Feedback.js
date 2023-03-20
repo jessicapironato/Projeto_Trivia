@@ -57,7 +57,6 @@ class Feedback extends Component {
   }
 }
 
-
 Feedback.defaultProps = {
   history: {},
 };
@@ -69,7 +68,7 @@ Feedback.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
-
+};
 
 const mapStateToProps = (state) => ({
   assertions: state.player.assertions,
@@ -81,4 +80,4 @@ export default connect(mapStateToProps)(Feedback);
 // Requisito 11: Aline, Raphael, Carlos, Jéssica;
 // Requisito 13: Raphael e Carlos
 // Requisito 14/15/16/18: Aline e Jéssica;
-
+//
