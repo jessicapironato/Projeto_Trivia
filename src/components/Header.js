@@ -38,3 +38,4 @@ export default connect(mapStateToProps)(Header);
 
 // Requisito 5: Raphael e Luiz;
 // Requisito 9: Raphael, Carlos;
+// Requisito 12: Aline, Raphael, Carlos e Jéssica;

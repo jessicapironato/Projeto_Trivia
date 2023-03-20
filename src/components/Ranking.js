@@ -38,3 +38,5 @@ Ranking.propTypes = {
   }),
 };
 export default Ranking;
+
+// Requisito 14/15/16/18: Aline e Jéssica;

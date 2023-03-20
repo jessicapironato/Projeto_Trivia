@@ -205,3 +205,4 @@ export default connect()(Questions);
 // Requisito 10: Aline e Jéssica; Requisito 7 falhando no cypress, verificar o link:
 // https://trybecourse.slack.com/archives/C03BTD3G9V3/p1662752927964429?thread_ts=1662752871.237939&cid=C03BTD3G9V3
 // Requisito 11: Aline, Raphael, Carlos, Jéssica;
+// Requisito 14/15/16/18: Aline e Jéssica;

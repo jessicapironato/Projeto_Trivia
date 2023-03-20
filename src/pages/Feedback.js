@@ -70,3 +70,4 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(Feedback);
 
 // Requisito 11: Aline, Raphael, Carlos, Jéssica;
+// Requisito 14/15/16/18: Aline e Jéssica;

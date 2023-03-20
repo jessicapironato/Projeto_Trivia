@@ -24,4 +24,4 @@ function App() {
 
 export default connect(null)(App);
 
-// Lembrar de atualizar paths caso seja necessário
+// Requisito 14/15/16/18: Aline e Jéssica;
