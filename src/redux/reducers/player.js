@@ -1,4 +1,6 @@
-import { UPDATE_PERSONAL_INFO, UPDATE_SCORE, UPDATE_ASSERTIONS } from '../actions';
+import { UPDATE_PERSONAL_INFO,
+  UPDATE_SCORE, UPDATE_ASSERTIONS,
+  RESET_SCORE } from '../actions';
 
 const INITIAL_STATE = {
   name: '', // nome-da-pessoa,
@@ -28,6 +30,15 @@ const player = (state = INITIAL_STATE, action) => {
       assertions: state.assertions + 1,
     };
   }
+  case RESET_SCORE: {
+    return {
+      ...state,
+      name: '',
+      assertions: 0,
+      score: 0,
+      gravatarEmail: '',
+    };
+  }
   default:
     return {
       ...state,
@@ -39,3 +50,4 @@ export default player;
 
 // Requisito 9: Raphael, Carlos;
 // Requisito 13: Raphael e Carlos
+// Requisito 19: Aline, Raphael, Carlos, Jéssica, Luiz;

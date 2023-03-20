@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import { resetScore } from '../redux/actions';
 
 class Feedback extends Component {
   handleClickPlayAgain = () => {
-    const { history } = this.props;
+    const { history, dispatch } = this.props;
     history.push('/');
-    // dispatch();
+    dispatch(resetScore());
   };
 
   handleClickRanking = () => {
@@ -64,7 +65,7 @@ Feedback.defaultProps = {
 Feedback.propTypes = {
   assertions: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
@@ -80,4 +81,4 @@ export default connect(mapStateToProps)(Feedback);
 // Requisito 11: Aline, Raphael, Carlos, Jéssica;
 // Requisito 13: Raphael e Carlos
 // Requisito 14/15/16/18: Aline e Jéssica;
-//
+// Requisito 19: Aline, Raphael, Carlos, Jéssica, Luiz;

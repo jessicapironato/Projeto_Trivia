@@ -102,12 +102,38 @@ class Questions extends Component {
   };
 
   handleClickNext = () => {
-    const { history } = this.props;
+    const { history, name, email, score } = this.props;
     const { positionQuestion } = this.state;
     const maxQuestion = 4;
 
     if (positionQuestion === maxQuestion) {
       history.push('/feedback');
+
+      // const ranking = JSON.parse(localStorage.getItem('ranking'));
+      // console.log(ranking);
+
+      if (!localStorage.getItem('ranking')) {
+        const newPlayer = {
+          name,
+          email,
+          score,
+        };
+
+        localStorage.setItem('ranking', JSON.stringify([newPlayer]));
+      } else {
+        const updatedRanking = JSON.parse(localStorage.getItem('ranking'));
+
+        const newPlayer = {
+          name,
+          email,
+          score,
+        };
+
+        const newUpdatedRanking = [...updatedRanking, newPlayer];
+        const sortedRanking = newUpdatedRanking.sort((a, b) => b.score - a.score);
+
+        localStorage.setItem('ranking', JSON.stringify(sortedRanking));
+      }
     }
     this.setState((prevState) => ({
       answered: false,
@@ -191,13 +217,22 @@ Questions.defaultProps = {
 };
 
 Questions.propTypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
 };
 
-export default connect()(Questions);
+const mapStateToProps = (state) => ({
+  name: state.player.name,
+  email: state.player.gravatarEmail,
+  score: state.player.score,
+});
+
+export default connect(mapStateToProps)(Questions);
 
 // Requisito 6: Aline, Raphael, Carlos, Jéssica, Luiz; Dependendo da "sorte" na aleatóriedade, requisito pode falhar nos testes;
 // Requisito 7: Aline, Raphael, Carlos, Jéssica, Luiz;
@@ -208,3 +243,4 @@ export default connect()(Questions);
 // Requisito 11: Aline, Raphael, Carlos, Jéssica;
 // Requisito 13: Raphael e Carlos
 // Requisito 14/15/16/18: Aline e Jéssica;
+// Requisito 19: Aline, Raphael, Carlos, Jéssica, Luiz;
