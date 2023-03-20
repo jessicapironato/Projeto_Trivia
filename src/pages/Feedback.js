@@ -10,6 +10,11 @@ class Feedback extends Component {
     // dispatch();
   };
 
+  handleClickRanking = () => {
+    const { history } = this.props;
+    history.push('/ranking');
+  };
+
   render() {
     const { assertions, score } = this.props;
     return (
@@ -27,10 +32,18 @@ class Feedback extends Component {
           { assertions }
         </h3>
         <button
+          type="button"
           data-testid="btn-play-again"
           onClick={ this.handleClickPlayAgain }
         >
           Play Again
+        </button>
+        <button
+          type="button"
+          data-testid="btn-ranking"
+          onClick={ this.handleClickRanking }
+        >
+          Ranking
         </button>
       </div>
     );
