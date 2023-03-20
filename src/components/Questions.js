@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../helpers/fetchHelpers';
 import './Questions.css';
-import { updateScore } from '../redux/actions';
+import { updateScore, updateAssertions } from '../redux/actions';
 
 class Questions extends Component {
   state = {
@@ -91,6 +91,7 @@ class Questions extends Component {
       const points = pointValue + (counter * diffObj[diff]);
 
       dispatch(updateScore(points));
+      dispatch(updateAssertions());
     }
   };
 
@@ -205,3 +206,4 @@ export default connect()(Questions);
 // Requisito 10: Aline e Jéssica; Requisito 7 falhando no cypress, verificar o link:
 // https://trybecourse.slack.com/archives/C03BTD3G9V3/p1662752927964429?thread_ts=1662752871.237939&cid=C03BTD3G9V3
 // Requisito 11: Aline, Raphael, Carlos, Jéssica;
+// Requisito 13: Raphael e Carlos

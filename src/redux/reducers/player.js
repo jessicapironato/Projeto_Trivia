@@ -1,4 +1,4 @@
-import { UPDATE_PERSONAL_INFO, UPDATE_SCORE } from '../actions';
+import { UPDATE_PERSONAL_INFO, UPDATE_SCORE, UPDATE_ASSERTIONS } from '../actions';
 
 const INITIAL_STATE = {
   name: '', // nome-da-pessoa,
@@ -22,6 +22,12 @@ const player = (state = INITIAL_STATE, action) => {
       score: state.score + action.payload,
     };
   }
+  case UPDATE_ASSERTIONS: {
+    return {
+      ...state,
+      assertions: state.assertions + 1,
+    };
+  }
   default:
     return {
       ...state,
@@ -32,3 +38,4 @@ const player = (state = INITIAL_STATE, action) => {
 export default player;
 
 // Requisito 9: Raphael, Carlos;
+// Requisito 13: Raphael e Carlos
