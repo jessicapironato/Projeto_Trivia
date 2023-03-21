@@ -5,12 +5,12 @@ import App from '../App';
 import { renderWithRouterAndRedux } from '../tests/helpers/renderWithRouterAndRedux'
 
 describe('Testa componente Questions', () => {
-//   const initialState = { player: {
-//     name: 'nome',
-//     assertions: 0,
-//     score: 0,
-//     gravatarEmail: 'test@test.com',
-// }, }
+  const initialState = { player: {
+    name: 'nome',
+    assertions: 0,
+    score: 0,
+    gravatarEmail: 'test@test.com',
+}, }
 
 
   it('1.Testa renderização', async ()=> {
@@ -84,9 +84,9 @@ describe('Testa componente Questions', () => {
 
   })
 
-  it('2.', ()=> {
+  // it('2.', ()=> {
     
-  })
+  // })
 
   // it('3.', ()=> {
     
