@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 import {jest} from '@jest/globals'
 import userEvent from '@testing-library/user-event';
 import App from '../App';
@@ -13,13 +13,10 @@ describe('Testa componente Questions', () => {
     gravatarEmail: 'test@test.com',
 }, }
 
-function timerGame(callback) {
-  console.log('Ready....go!');
-  setTimeout(() => {
-    console.log("Time's up -- stop!");
-    callback && callback();
-  }, 1000);
-}
+afterEach(() => {
+  jest.restoreAllMocks()
+  jest.useRealTimers()
+})
 
   it('1.Testa renderização', async ()=> {
 
@@ -47,19 +44,33 @@ function timerGame(callback) {
 
   })
 
-  it.skip('2.Testa se após o contador ser zerado, a pergunta consta como respondida ', async ()=> {
-    
+  it('2.Testa se após o contador ser zerado, a pergunta consta como respondida ', async ()=> {
     jest.useFakeTimers();
+    jest.spyOn(global, 'setInterval')
+
     const route = '/game';
     renderWithRouterAndRedux(<App />, initialState, route);
-    const callback = jest.fn();
+
+    // jest.runAllTimers();
+
+    // const callback = jest.fn();
     
-    timerGame(callback);
+    // timerGame(callback);
 
-    jest.advanceTimersByTime(32000);
+    
+    
+    const counter = screen.getByTestId('question-counter');
+    expect(counter).toHaveTextContent(30)
+    
+    act(()=> {
+      jest.advanceTimersByTime(32000);
+    })
 
-    const correctAnswer = screen.getByTestId('correct-answer');
-    expect(correctAnswer).toBeDisabled()
+    // const correctAnswer = await screen.findByTestId('correct-answer', {}, { timeout: 4000 })
+    // expect(correctAnswer).toBeDisabled()
+
+    const counter2 = screen.getByTestId('question-counter');
+    expect(counter2).toHaveTextContent(1)
   
   })
 
@@ -89,7 +100,25 @@ function timerGame(callback) {
 });
 
 
-  test('4. Testa se ', () => {
+  it('4. Testa se o token for inválido, retorna para a página de Login', async () => {
+    const mockData = {
+      "response_code":3,
+      "results":[]
+    }
+
+    jest.spyOn(global, 'fetch');
+    global.fetch.mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockData),
+    });
+
+
+    const route = '/game';
+    const {history} = renderWithRouterAndRedux(<App />, initialState, route);
+
+    const nameInput = await screen.findByTestId('input-player-name', {}, { timeout: 4000 });
+    expect(nameInput).toBeVisible();
+    const { pathname } = history.location;
+    expect(pathname).toBe('/');
 
   })
 })

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchQuestions } from '../helpers/fetchHelpers';
 import './Questions.css';
 import { updateScore, updateAssertions } from '../redux/actions';
+import styles from '../styles/game.module.css';
 
 class Questions extends Component {
   state = {
@@ -176,13 +177,13 @@ class Questions extends Component {
             </h1>
           </>
         )}
-        <div><h2>{counter}</h2></div>
+        <div><h2 data-testid="question-counter">{counter}</h2></div>
         <div data-testid="answer-options">
           {
             arrayQuestions.length > 0 && (
               generatedAnswers.map((answer) => (
                 <button
-                  className={ answered ? answer.color : '' }
+                  className={ answered ? answer.color : 'normal' }
                   key={ answer.question }
                   type="button"
                   data-testid={ answer.dataTestId }
@@ -200,6 +201,7 @@ class Questions extends Component {
         </div>
         {answered && (
           <button
+            className={ styles.next }
             data-testid="btn-next"
             type="button"
             onClick={ this.handleClickNext }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
+import styles from '../styles/game.module.css';
 
 class Header extends Component {
   render() {
@@ -9,7 +10,7 @@ class Header extends Component {
     const gravatarSrc = `https://www.gravatar.com/avatar/${md5(email).toString()}`;
     return (
       <div>
-        <h1>Header</h1>
+        <h1 className={ styles.title }>Trivia</h1>
         <img
           src={ gravatarSrc }
           alt={ md5(email).toString() }

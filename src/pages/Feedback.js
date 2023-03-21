@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { resetScore } from '../redux/actions';
+import styles from '../styles/feedback.module.css';
 
 class Feedback extends Component {
   handleClickPlayAgain = () => {
@@ -20,7 +21,7 @@ class Feedback extends Component {
     const { assertions, score } = this.props;
     const minAssertion = 3;
     return (
-      <div>
+      <div className={ styles.containerFeedback }>
         <h1>Feedback</h1>
         <Header />
         <h2
