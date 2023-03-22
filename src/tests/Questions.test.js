@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import { screen} from '@testing-library/react';
 import {jest} from '@jest/globals'
 import userEvent from '@testing-library/user-event';
 import App from '../App';
@@ -13,13 +13,10 @@ describe('Testa componente Questions', () => {
     gravatarEmail: 'test@test.com',
 }, }
 
-function timerGame(callback) {
-  console.log('Ready....go!');
-  setTimeout(() => {
-    console.log("Time's up -- stop!");
-    callback && callback();
-  }, 1000);
-}
+afterEach(() => {
+  jest.restoreAllMocks()
+  jest.useRealTimers()
+})
 
   it('1.Testa renderização', async ()=> {
 
@@ -47,23 +44,7 @@ function timerGame(callback) {
 
   })
 
-  it.skip('2.Testa se após o contador ser zerado, a pergunta consta como respondida ', async ()=> {
-    
-    jest.useFakeTimers();
-    const route = '/game';
-    renderWithRouterAndRedux(<App />, initialState, route);
-    const callback = jest.fn();
-    
-    timerGame(callback);
-
-    jest.advanceTimersByTime(32000);
-
-    const correctAnswer = screen.getByTestId('correct-answer');
-    expect(correctAnswer).toBeDisabled()
-  
-  })
-
-  it('3.Testa se adiciona um novo jogador ao LocalStorage', async () => {
+  it('2.Testa se adiciona um novo jogador ao LocalStorage', async () => {
     window.localStorage.setItem('ranking', JSON.stringify([{name: 'nome1', email: 'test1@test.com', score: 80}]));
     const { history } = renderWithRouterAndRedux(<App />);
     const inputName = screen.getByTestId('input-player-name');
@@ -74,7 +55,12 @@ function timerGame(callback) {
     userEvent.click(btnPlay);
 
     for (let i = 0; i < 5; i++) {
-        const correctAnswer = await screen.findByTestId('correct-answer', {}, { timeout: 4000 });
+      if (i === 1) {
+        const incorrectAnswer = await screen.findByTestId('wrong-answer-0', {}, { timeout: 2000 });
+        expect(incorrectAnswer).toBeVisible();
+        userEvent.click(incorrectAnswer);
+      }
+        const correctAnswer = await screen.findByTestId('correct-answer', {}, { timeout: 2000 });
         expect(correctAnswer).toBeVisible();
         userEvent.click(correctAnswer);
         expect(correctAnswer).toBeDisabled();
@@ -88,8 +74,25 @@ function timerGame(callback) {
     expect(pathname).toBe('/feedback');
 });
 
+  it('3. Testa se o token for inválido, retorna para a página de Login', async () => {
+    const mockData = {
+      "response_code":3,
+      "results":[]
+    }
 
-  test('4. Testa se ', () => {
+    jest.spyOn(global, 'fetch');
+    global.fetch.mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockData),
+    });
+
+
+    const route = '/game';
+    const {history} = renderWithRouterAndRedux(<App />, initialState, route);
+
+    const nameInput = await screen.findByTestId('input-player-name', {}, { timeout: 4000 });
+    expect(nameInput).toBeVisible();
+    const { pathname } = history.location;
+    expect(pathname).toBe('/');
 
   })
 })

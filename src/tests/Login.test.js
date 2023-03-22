@@ -9,7 +9,7 @@ describe('Testa a página de Login',() =>{
 it('1.Testa se as informações são renderizadas', ()=>{
     renderWithRouterAndRedux(<App />);
 
-    const title = screen.getByRole('heading', {name: 'Login Page', level:1 });
+    const title = screen.getByRole('heading', {name: 'Trivia', level:1 });
     const inputName = screen.getByTestId('input-player-name');
     const inputEmail = screen.getByTestId('input-gravatar-email');
     const btnPlay = screen.getByTestId('btn-play');

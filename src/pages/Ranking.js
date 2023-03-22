@@ -3,6 +3,7 @@ import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { resetScore } from '../redux/actions';
+import styles from '../styles/ranking.module.css';
 
 class Ranking extends Component {
   state = {
@@ -26,7 +27,7 @@ class Ranking extends Component {
   render() {
     const { ranking } = this.state;
     return (
-      <>
+      <div className={ styles.rankingContainer }>
         <div
           data-testid="ranking-title"
         >
@@ -50,7 +51,7 @@ class Ranking extends Component {
         >
           Login
         </button>
-      </>
+      </div>
     );
   }
 }

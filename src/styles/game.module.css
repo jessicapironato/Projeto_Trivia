@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;1,300&family=Orbitron:wght@400;500;600;700;800;900&display=swap') ;
+
+.gameContainer {
+  border: 4px rgb(150, 152, 178) solid;
+  border-radius: 10px;
+  color: white;
+  font-family: Orbitron , sans-serif;
+  font-size: 15px;
+  margin: 400px auto;
+  padding: 25px;
+  text-align: center;
+  width: 800px;
+}
+
+body {
+  background-attachment: fixed;
+  background-image: url('/public/fundoQuestions.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+h2 {
+  color: red;
+  font-size: 50px;
+}
+
+h3 {
+  color: rgb(0, 8, 255);
+  font-size: 35px;
+
+}
+
+.title {
+  font-size: 60px;
+}
+
+.next {
+  margin: 40px;
+  padding: 20px;
+}
