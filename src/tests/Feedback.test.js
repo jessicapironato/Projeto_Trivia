@@ -84,4 +84,4 @@ it('4. Testa se ao clicar em Ranking a pagina é redirecionada para /ranking', (
 
 })
 
-
+  // requisito 22: Aline, Raphael, Jéssica, Carlos;

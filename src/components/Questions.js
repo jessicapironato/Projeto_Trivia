@@ -183,8 +183,8 @@ class Questions extends Component {
             <h2 className="counter" data-testid="question-counter">{counter}</h2>
           </div>
         </div>
-        <div className="container-options" data-testid="answer-options">
-          <div className="answer-options">
+        <div className="container-options">
+          <div className="answer-options" data-testid="answer-options">
             {
               arrayQuestions.length > 0 && (
                 generatedAnswers.map((answer) => (

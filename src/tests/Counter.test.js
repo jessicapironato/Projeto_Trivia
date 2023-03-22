@@ -34,4 +34,6 @@ describe('Teste com counter', ()=> {
       }, { timeout: 34000})
     })
   })
+
+  // requisito 22: Aline, Raphael, Jéssica, Carlos;
   

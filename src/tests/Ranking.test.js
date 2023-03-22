@@ -22,3 +22,5 @@ describe('Testa componente Ranking', () => {
     expect(history.location.pathname).toBe('/');
   })
 })
+
+  // requisito 22: Aline, Raphael, Jéssica, Carlos;
