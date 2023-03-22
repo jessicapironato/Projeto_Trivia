@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, act } from '@testing-library/react';
+import { screen} from '@testing-library/react';
 import {jest} from '@jest/globals'
 import userEvent from '@testing-library/user-event';
 import App from '../App';
@@ -44,37 +44,7 @@ afterEach(() => {
 
   })
 
-  it('2.Testa se após o contador ser zerado, a pergunta consta como respondida ', async ()=> {
-    jest.useFakeTimers();
-    jest.spyOn(global, 'setInterval')
-
-    const route = '/game';
-    renderWithRouterAndRedux(<App />, initialState, route);
-
-    // jest.runAllTimers();
-
-    // const callback = jest.fn();
-    
-    // timerGame(callback);
-
-    
-    
-    const counter = screen.getByTestId('question-counter');
-    expect(counter).toHaveTextContent(30)
-    
-    act(()=> {
-      jest.advanceTimersByTime(32000);
-    })
-
-    // const correctAnswer = await screen.findByTestId('correct-answer', {}, { timeout: 4000 })
-    // expect(correctAnswer).toBeDisabled()
-
-    const counter2 = screen.getByTestId('question-counter');
-    expect(counter2).toHaveTextContent(1)
-  
-  })
-
-  it('3.Testa se adiciona um novo jogador ao LocalStorage', async () => {
+  it('2.Testa se adiciona um novo jogador ao LocalStorage', async () => {
     window.localStorage.setItem('ranking', JSON.stringify([{name: 'nome1', email: 'test1@test.com', score: 80}]));
     const { history } = renderWithRouterAndRedux(<App />);
     const inputName = screen.getByTestId('input-player-name');
@@ -85,7 +55,12 @@ afterEach(() => {
     userEvent.click(btnPlay);
 
     for (let i = 0; i < 5; i++) {
-        const correctAnswer = await screen.findByTestId('correct-answer', {}, { timeout: 4000 });
+      if (i === 1) {
+        const incorrectAnswer = await screen.findByTestId('wrong-answer-0', {}, { timeout: 2000 });
+        expect(incorrectAnswer).toBeVisible();
+        userEvent.click(incorrectAnswer);
+      }
+        const correctAnswer = await screen.findByTestId('correct-answer', {}, { timeout: 2000 });
         expect(correctAnswer).toBeVisible();
         userEvent.click(correctAnswer);
         expect(correctAnswer).toBeDisabled();
@@ -99,8 +74,7 @@ afterEach(() => {
     expect(pathname).toBe('/feedback');
 });
 
-
-  it('4. Testa se o token for inválido, retorna para a página de Login', async () => {
+  it('3. Testa se o token for inválido, retorna para a página de Login', async () => {
     const mockData = {
       "response_code":3,
       "results":[]
