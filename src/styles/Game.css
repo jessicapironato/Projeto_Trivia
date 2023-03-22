@@ -148,3 +148,7 @@ h3 {
   width: 80%;
 }
 
+.button-next:hover {
+  background-color: rgb(34, 32, 32);
+}
+
