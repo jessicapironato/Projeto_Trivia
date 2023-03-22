@@ -48,11 +48,10 @@ h1 {
 }
 
 h2 {
-  font-size: 30px;
   color: #ff007f;
-  box-shadow: 0 0 10px #ff007f;
-  padding: 10px;
+  font-size: 30px;
   margin-bottom: 30px;
+  padding: 10px;
 }
 
 .feedback-assertions-score {
