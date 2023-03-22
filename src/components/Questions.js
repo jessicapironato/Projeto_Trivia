@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../helpers/fetchHelpers';
-import './Questions.css';
 import { updateScore, updateAssertions } from '../redux/actions';
-import styles from '../styles/game.module.css';
+import '../styles/Game.css';
+import timer from '../images/timer.png';
 
 class Questions extends Component {
   state = {
@@ -162,53 +162,61 @@ class Questions extends Component {
       clearInterval(this.timer);
     }
     return (
-      <div>
-        {arrayQuestions.length > 0 && (
-          <>
-            <h1 data-testid="question-category">
-              { arrayQuestions[positionQuestion]
-                .category }
+      <div className="container-questions">
+        <div className="container-category-timer">
+          {arrayQuestions.length > 0 && (
+            <>
+              <h1 className="question-category" data-testid="question-category">
+                { arrayQuestions[positionQuestion]
+                  .category }
 
-            </h1>
-            <h1 data-testid="question-text">
-              { arrayQuestions[positionQuestion]
-                .question }
+              </h1>
+              <h1 className="question-text" data-testid="question-text">
+                { arrayQuestions[positionQuestion]
+                  .question }
 
-            </h1>
-          </>
-        )}
-        <div><h2 data-testid="question-counter">{counter}</h2></div>
-        <div data-testid="answer-options">
-          {
-            arrayQuestions.length > 0 && (
-              generatedAnswers.map((answer) => (
-                <button
-                  className={ answered ? answer.color : 'normal' }
-                  key={ answer.question }
-                  type="button"
-                  data-testid={ answer.dataTestId }
-                  value={ answer.correct }
-                  data-diff={ arrayQuestions[positionQuestion].difficulty }
-                  onClick={ this.onClickHandler }
-                  disabled={ counter === 0 || answered }
-                >
-                  {answer.question}
-
-                </button>
-              ))
-            )
-          }
+              </h1>
+            </>
+          )}
+          <div className="container-timer">
+            <img className="img-timer" src={ timer } alt="timer" />
+            <h2 className="counter" data-testid="question-counter">{counter}</h2>
+          </div>
         </div>
-        {answered && (
-          <button
-            className={ styles.next }
-            data-testid="btn-next"
-            type="button"
-            onClick={ this.handleClickNext }
-          >
+        <div className="container-options">
+          <div className="answer-options" data-testid="answer-options">
+            {
+              arrayQuestions.length > 0 && (
+                generatedAnswers.map((answer) => (
+                  <button
+                    className={ answered ? answer.color : 'normal' }
+                    key={ answer.question }
+                    type="button"
+                    data-testid={ answer.dataTestId }
+                    value={ answer.correct }
+                    data-diff={ arrayQuestions[positionQuestion].difficulty }
+                    onClick={ this.onClickHandler }
+                    disabled={ counter === 0 || answered }
+                  >
+                    {answer.question}
 
-            Next
-          </button>)}
+                  </button>
+                ))
+              )
+            }
+          </div>
+
+          {answered && (
+            <button
+              className="button-next"
+              data-testid="btn-next"
+              type="button"
+              onClick={ this.handleClickNext }
+            >
+
+              Next
+            </button>)}
+        </div>
       </div>
     );
   }
@@ -235,14 +243,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Questions);
-
-// Requisito 6: Aline, Raphael, Carlos, Jéssica, Luiz; Dependendo da "sorte" na aleatóriedade, requisito pode falhar nos testes;
-// Requisito 7: Aline, Raphael, Carlos, Jéssica, Luiz;
-// Requisito 8: Aline, Raphael, Carlos, Jéssica, Luiz;
-// Requisito 9: Raphael, Carlos;
-// Requisito 10: Aline e Jéssica; Requisito 7 falhando no cypress, verificar o link:
-// https://trybecourse.slack.com/archives/C03BTD3G9V3/p1662752927964429?thread_ts=1662752871.237939&cid=C03BTD3G9V3
-// Requisito 11: Aline, Raphael, Carlos, Jéssica;
-// Requisito 13: Raphael e Carlos
-// Requisito 14/15/16/18: Aline e Jéssica;
-// Requisito 19: Aline, Raphael, Carlos, Jéssica, Luiz;
+// Requisito 6, 19: Aline, Raphael, Carlos, Jéssica, Luiz; Dependendo da "sorte" na aleatóriedade, requisito pode falhar nos testes;
+// Requisito 7, 19, 11, 8: Aline, Raphael, Carlos, Jéssica, Luiz;
+// Requisito 9, 13: Raphael, Carlos;
+// Requisito 10, 14, 15, 16, 18: Aline e Jéssica; Requisito 7 falhando no cypress, verificar no slack

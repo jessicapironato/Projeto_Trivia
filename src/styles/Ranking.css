@@ -1,0 +1,82 @@
+.container-ranking {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.container-inside-ranking {
+  align-items: center;
+  background-color: rgb(32, 29, 29);
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ff007f;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  justify-content: center;
+  max-width: 700px;
+  text-align: center;
+  width: 45%;
+}
+
+ul {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 80%;
+}
+
+li {
+  background-color: rgb(44, 39, 39);
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.name-img-ranking {
+  align-items: center;
+  display: flex;
+}
+
+img {
+  border-radius: 50%;
+  height: 5vh;
+  margin-left: 10px;
+}
+
+.name-ranking {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.score-ranking {
+  align-items: center;
+  display: flex;
+}
+
+.score-ranking img {
+  height: 3vh;
+}
+
+.score-number {
+  font-size: 20px;
+  margin-left: 5px;
+  margin-right: 10px;
+  width: 30px;
+}
+
+.btn-login-ranking {
+  background-color: black;
+  border: 2px solid #ff007f;
+  color: white;
+  font-size: large;
+  height: 50px;
+  margin-top: 10px;
+  text-align: center;
+  width: 60%;
+}

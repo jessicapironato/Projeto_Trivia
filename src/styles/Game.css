@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;1,300&family=Orbitron:wght@400;500;600;700;800;900&display=swap') ;
+
+html {
+  height: 100vh;
+  width: 100%;
+}
+
+.container-game {
+  color: white;
+  height: 100vh;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  font-family: Orbitron , sans-serif;
+  justify-content: space-around;
+}
+
+.user-header {
+  align-items: center;
+  display: flex;
+}
+
+.user-header img {
+  border-radius: 50%;
+  height: 5vh;
+  margin-right: 10px;
+}
+
+h3 {
+  color: #ff007f;
+  font-size: 25px;
+}
+
+.container-questions {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 90px;
+}
+
+.container-category-timer {
+  align-items: center;
+  background-color: rgb(32, 29, 29);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #ff007f;
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+  height: 60vh;
+  justify-content: space-between;
+  text-align: center;
+  width: 40%;
+}
+
+.question-category {
+  background-color: #ff007f;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  width: 80%;
+}
+
+.question-text {
+  margin: 30px;
+}
+
+.container-timer {
+  align-items: center;
+  display: flex;
+}
+
+.img-timer {
+  height: 5vh;
+  margin-right: 5px;
+}
+
+.counter {
+  color: #ff007f;
+  font-size: 40px;
+}
+
+.container-options {
+  align-items: center;
+  background-color: rgb(32, 29, 29);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #ff007f;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  justify-content: space-around;
+  width: 40%;
+}
+
+.answer-options {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.red {
+  align-items: center;
+  border: 3px solid red;
+  border-radius: 5px;
+  display: flex;
+  font-size: medium;
+  height: 3vh;
+  justify-content: center;
+  margin: 8px;
+  padding: 20px;
+  width: 70%;
+}
+
+.green {
+  align-items: center;
+  border: 3px solid rgb(6, 240, 15);
+  border-radius: 5px;
+  display: flex;
+  font-size: medium;
+  height: 3vh;
+  justify-content: center;
+  margin: 8px;
+  padding: 20px;
+  width: 70%;
+}
+
+.normal {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  font-size: medium;
+  height: 3vh;
+  justify-content: center;
+  margin: 8px;
+  padding: 20px;
+  width: 70%;
+}
+
+.normal:hover {
+  background-color: rgb(188, 181, 181);
+}
+
+.button-next {
+  background-color: black;
+  border: 2px solid #ff007f;
+  box-shadow: 2px 2px 2px 1px rgb(71, 69, 69);
+  color: white;
+  font-size: large;
+  height: 50px;
+  margin: 10px;
+  text-align: center;
+  width: 80%;
+}
+
+.button-next:hover {
+  background-color: rgb(34, 32, 32);
+}
+

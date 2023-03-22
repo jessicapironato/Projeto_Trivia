@@ -1,0 +1,97 @@
+.header {
+  display: flex;
+  font-family: Orbitron , sans-serif;
+  justify-content: space-around;
+}
+
+.user-header {
+  align-items: center;
+  display: flex;
+}
+
+.user-header img {
+  border-radius: 50%;
+  height: 5vh;
+  margin-right: 10px;
+}
+
+h3 {
+  color: #ff007f;
+  font-size: 25px;
+}
+
+h1 {
+  color: white;
+}
+
+.container-out-feedback {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  justify-content: center;
+}
+
+.container-feedback {
+  align-items: center;
+  background-color: rgb(32, 29, 29);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgb(64, 60, 60);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  justify-content: center;
+  max-width: 600px;
+  text-align: center;
+  width: 45%;
+}
+
+h2 {
+  color: #ff007f;
+  font-size: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.feedback-assertions-score {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.h3 {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.assertions, .score {
+  color: white;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.btn-feedback {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 600px;
+  width: 45%;
+}
+
+.btn-play-again, .btn-ranking {
+  background-color: black;
+  border: 2px solid #ff007f;
+  color: white;
+  font-size: large;
+  height: 50px;
+  margin: 20px 10px;
+  text-align: center;
+  width: 80%;
+}
+
+.btn-play-again:hover, .btn-ranking:hover {
+  background-color: rgb(34, 32, 32);
+}
+
