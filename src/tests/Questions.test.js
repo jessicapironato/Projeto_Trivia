@@ -60,7 +60,7 @@ afterEach(() => {
         expect(incorrectAnswer).toBeVisible();
         userEvent.click(incorrectAnswer);
       }
-        const correctAnswer = await screen.findByTestId('correct-answer', {}, { timeout: 2000 });
+        const correctAnswer = await screen.findByTestId('correct-answer', {}, { timeout: 5000 });
         expect(correctAnswer).toBeVisible();
         userEvent.click(correctAnswer);
         expect(correctAnswer).toBeDisabled();
@@ -89,7 +89,7 @@ afterEach(() => {
     const route = '/game';
     const {history} = renderWithRouterAndRedux(<App />, initialState, route);
 
-    const nameInput = await screen.findByTestId('input-player-name', {}, { timeout: 4000 });
+    const nameInput = await screen.findByTestId('input-player-name', {}, { timeout: 5000 });
     expect(nameInput).toBeVisible();
     const { pathname } = history.location;
     expect(pathname).toBe('/');

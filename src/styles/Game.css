@@ -108,17 +108,21 @@ h3 {
   font-size: medium;
   height: 3vh;
   justify-content: center;
+  margin: 8px;
+  padding: 20px;
   width: 70%;
 }
 
 .green {
   align-items: center;
-  border: 3px solid green;
+  border: 3px solid rgb(6, 240, 15);
   border-radius: 5px;
   display: flex;
   font-size: medium;
   height: 3vh;
   justify-content: center;
+  margin: 8px;
+  padding: 20px;
   width: 70%;
 }
 
@@ -129,6 +133,8 @@ h3 {
   font-size: medium;
   height: 3vh;
   justify-content: center;
+  margin: 8px;
+  padding: 20px;
   width: 70%;
 }
 

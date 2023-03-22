@@ -3,7 +3,8 @@ import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { resetScore } from '../redux/actions';
-import styles from '../styles/ranking.module.css';
+import '../styles/Ranking.css';
+import star from '../images/star.png';
 
 class Ranking extends Component {
   state = {
@@ -27,30 +28,50 @@ class Ranking extends Component {
   render() {
     const { ranking } = this.state;
     return (
-      <div className={ styles.rankingContainer }>
-        <div
-          data-testid="ranking-title"
-        >
-          Ranking
+      <div className="container-ranking">
+        <div className="container-inside-ranking">
+          <h1
+            data-testid="ranking-title"
+          >
+            Ranking
+          </h1>
+          <ul>
+            {
+              ranking.map((player, index) => (
+                <li key={ player.email }>
+                  <div className="name-img-ranking">
+                    <img src={ `https://www.gravatar.com/avatar/${md5(player.email).toString()}` } alt={ player.name } />
+                    <p
+                      className="name-ranking"
+                      data-testid={ `player-name-${index}` }
+                    >
+                      {player.name}
+
+                    </p>
+                  </div>
+                  <div className="score-ranking">
+                    <img className="img-star" src={ star } alt="star" />
+                    <p
+                      className="score-number"
+                      data-testid={ `player-score-${index}` }
+                    >
+                      {player.score}
+
+                    </p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+          <button
+            className="btn-login-ranking"
+            type="button"
+            data-testid="btn-go-home"
+            onClick={ this.handleClickGoHome }
+          >
+            Login
+          </button>
         </div>
-        <ul>
-          {
-            ranking.map((player, index) => (
-              <li key={ player.email }>
-                <img src={ `https://www.gravatar.com/avatar/${md5(player.email).toString()}` } alt={ player.name } />
-                <p data-testid={ `player-name-${index}` }>{player.name}</p>
-                <p data-testid={ `player-score-${index}` }>{player.score}</p>
-              </li>
-            ))
-          }
-        </ul>
-        <button
-          type="button"
-          data-testid="btn-go-home"
-          onClick={ this.handleClickGoHome }
-        >
-          Login
-        </button>
       </div>
     );
   }

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fecthToken } from '../helpers/fetchHelpers';
 import { updatePersonalInfo } from '../redux/actions';
-// import styles from '../styles/login.module.css';
 import '../styles/Login.css';
 
 class Login extends Component {

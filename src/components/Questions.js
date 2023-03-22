@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../helpers/fetchHelpers';
-import './Questions.css';
 import { updateScore, updateAssertions } from '../redux/actions';
 import '../styles/Game.css';
 import timer from '../images/timer.png';

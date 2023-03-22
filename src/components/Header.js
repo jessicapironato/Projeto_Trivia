@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
-// import styles from '../styles/game.module.css';
 import '../styles/Game.css';
 import '../styles/Feedback.css';
 

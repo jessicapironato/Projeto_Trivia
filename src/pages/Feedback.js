@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { resetScore } from '../redux/actions';
-// import styles from '../styles/feedback.module.css';
 import '../styles/Feedback.css';
 
 class Feedback extends Component {
