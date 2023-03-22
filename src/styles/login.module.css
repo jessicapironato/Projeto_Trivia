@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;1,300&family=Orbitron:wght@400;500;600;700;800;900&display=swap') ;
+/* @import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;1,300&family=Orbitron:wght@400;500;600;700;800;900&display=swap') ;
 
 .loginContainer {
   border: 4px rgb(150, 152, 178) solid;
@@ -13,10 +13,9 @@
 }
 
 body {
-  background-image: url('/public/fundoLogin.png');
-  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url('../images/fundoLogin.png');
   background-size: cover;
-
 }
 
 input, button {
@@ -24,5 +23,5 @@ input, button {
   color: white;
   font-size: medium;
   padding: 10px;
-}
+} */
 

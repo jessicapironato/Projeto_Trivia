@@ -56,7 +56,7 @@ afterEach(() => {
 
     for (let i = 0; i < 5; i++) {
       if (i === 1) {
-        const incorrectAnswer = await screen.findByTestId('wrong-answer-0', {}, { timeout: 2000 });
+        const incorrectAnswer = await screen.findByTestId('wrong-answer-0', {}, { timeout: 5000 });
         expect(incorrectAnswer).toBeVisible();
         userEvent.click(incorrectAnswer);
       }

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;1,300&family=Orbitron:wght@400;500;600;700;800;900&display=swap') ;
+
+body {
+  background-image: url('../images/fundoLogin.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.container-login {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.container-form-login {
+  border: 4px white solid;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: Orbitron , sans-serif;
+  font-size: 35px;
+  height: 50vh;
+  padding: 50px 80px;
+  text-align: center;
+}
+
+input {
+  background-color: black;
+  border: 1px solid #ff007f;
+  color: white;
+  font-size: 16px;
+  height: 40px;
+  margin: 10px;
+  text-align: center;
+  width: 250px;
+}
+
+::placeholder {
+  color: white;
+}
+
+.button-login {
+  background-color: black;
+  border: 2px solid #ff007f;
+  box-shadow: 2px 2px 2px 1px rgb(71, 69, 69);
+  color: white;
+  font-size: large;
+  height: 50px;
+  margin: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.button-login:hover {
+  background-color: rgb(34, 32, 32);
+}
+
+.inputs-login {
+  margin-top: 30px;
+}
+
+.buttons-login {
+  margin-top: 30px;
+}

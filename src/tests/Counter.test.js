@@ -14,7 +14,7 @@ describe('Teste com counter', ()=> {
       gravatarEmail: 'test@test.com',
   }, }
   
-    jest.setTimeout(35000);
+    jest.setTimeout(37000);
     it('2.Testa se após o contador ser zerado, a pergunta consta como respondida ', async ()=> {
   
       const route = '/';

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fecthToken } from '../helpers/fetchHelpers';
 import { updatePersonalInfo } from '../redux/actions';
-import styles from '../styles/login.module.css';
+// import styles from '../styles/login.module.css';
+import '../styles/Login.css';
 
 class Login extends Component {
   state = {
@@ -46,41 +47,46 @@ class Login extends Component {
   render() {
     const { name, email, buttonLogin } = this.state;
     return (
-      <div className={ styles.loginContainer }>
-        <div>
+      <div className="container-login">
+        <div className="container-form-login">
           <h1>Trivia</h1>
-          <input
-            type="text"
-            name="name"
-            value={ name }
-            onChange={ this.handleChange }
-            placeholder="Nome"
-            data-testid="input-player-name"
-          />
-          <input
-            type="email"
-            name="email"
-            value={ email }
-            onChange={ this.handleChange }
-            placeholder="email"
-            data-testid="input-gravatar-email"
-          />
-          <button
-            type="button"
-            data-testid="btn-play"
-            disabled={ buttonLogin }
-            onClick={ this.onClickHandler }
-          >
-            Play
-          </button>
+          <div className="inputs-login">
+            <input
+              type="text"
+              name="name"
+              value={ name }
+              onChange={ this.handleChange }
+              placeholder="Nome"
+              data-testid="input-player-name"
+            />
+            <input
+              type="email"
+              name="email"
+              value={ email }
+              onChange={ this.handleChange }
+              placeholder="Email"
+              data-testid="input-gravatar-email"
+            />
+          </div>
+          <div className="buttons-login">
+            <button
+              className="button-login"
+              type="button"
+              data-testid="btn-play"
+              disabled={ buttonLogin }
+              onClick={ this.onClickHandler }
+            >
+              Play
+            </button>
 
-          <button
-            type="button"
-            data-testid="btn-settings"
-            onClick={ this.onClickSettings }
-          >
-            Settings
-          </button>
+            <button
+              className="button-login"
+              data-testid="btn-settings"
+              onClick={ this.onClickSettings }
+            >
+              Settings
+            </button>
+          </div>
         </div>
 
       </div>
