@@ -1,13 +1,6 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Projeto Trivia
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
-
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
+Esse projeto foi realizado em quarteto, usando a técnica Pair Programming (Live Share - VS Code) no curso de Front-end da Trybe.
+Foi implementado um jogo de perguntas e respostas, usando React Redux.
+Autores: Jéssica Pironato Máximo Gama, Aline Moura Santos, Raphael Mocellin e Carlos Eduardo Fernandes.
 -->
