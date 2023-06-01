@@ -20,10 +20,7 @@ Durante o desenvolvimento deste projeto, você terá a oportunidade de aprimorar
 
 Siga as orientações abaixo para configurar e executar o projeto em sua máquina local:
 
-1. Clone o repositório:
-   ```
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
-   ```
+1. Clone o repositório
 
 2. Instale as dependências:
    ```
